@@ -1,0 +1,68 @@
+
+Options: -B 6 
+
+diasfora:
+	< 25.5	-> True
+	< 27.5	-> False
+	< 30.5	-> True
+	>= 30.5	-> False
+(144/165 instances correct)
+
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         144               87.2727 %
+Incorrectly Classified Instances        21               12.7273 %
+Kappa statistic                          0.7454
+Mean absolute error                      0.1273
+Root mean squared error                  0.3568
+Relative absolute error                 25.4555 %
+Root relative squared error             71.3519 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.866     0.12       0.877     0.866     0.871      0.873    False
+                 0.88      0.134      0.869     0.88      0.874      0.873    True
+Weighted Avg.    0.873     0.127      0.873     0.873     0.873      0.873
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 71 11 |  a = False
+ 10 73 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         138               83.6364 %
+Incorrectly Classified Instances        27               16.3636 %
+Kappa statistic                          0.6727
+Mean absolute error                      0.1636
+Root mean squared error                  0.4045
+Relative absolute error                 32.722  %
+Root relative squared error             80.8886 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.841     0.169      0.831     0.841     0.836      0.836    False
+                 0.831     0.159      0.841     0.831     0.836      0.836    True
+Weighted Avg.    0.836     0.164      0.836     0.836     0.836      0.836
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 69 13 |  a = False
+ 14 69 |  b = True
+

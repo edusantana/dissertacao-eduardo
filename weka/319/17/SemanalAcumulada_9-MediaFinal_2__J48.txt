@@ -1,0 +1,71 @@
+
+Options: -C 0.25 -M 2 
+
+J48 pruned tree
+------------------
+
+diasfora <= 5: True (48.0/2.0)
+diasfora > 5: False (117.0/11.0)
+
+Number of Leaves  : 	2
+
+Size of the tree : 	3
+
+
+Time taken to build model: 0.04 seconds
+Time taken to test model on training data: 0.02 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         152               92.1212 %
+Incorrectly Classified Instances        13                7.8788 %
+Kappa statistic                          0.819 
+Mean absolute error                      0.144 
+Root mean squared error                  0.2684
+Relative absolute error                 31.8085 %
+Root relative squared error             56.4343 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.981     0.193      0.906     0.981     0.942      0.894    False
+                 0.807     0.019      0.958     0.807     0.876      0.894    True
+Weighted Avg.    0.921     0.133      0.924     0.921     0.919      0.894
+
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 106   2 |   a = False
+  11  46 |   b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         148               89.697  %
+Incorrectly Classified Instances        17               10.303  %
+Kappa statistic                          0.7693
+Mean absolute error                      0.156 
+Root mean squared error                  0.3144
+Relative absolute error                 34.4475 %
+Root relative squared error             66.105  %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.935     0.175      0.91      0.935     0.922      0.836    False
+                 0.825     0.065      0.87      0.825     0.847      0.836    True
+Weighted Avg.    0.897     0.137      0.896     0.897     0.896      0.836
+
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 101   7 |   a = False
+  10  47 |   b = True
+

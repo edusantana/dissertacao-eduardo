@@ -1,0 +1,113 @@
+
+Options: -C 0.25 -M 2 
+
+J48 pruned tree
+------------------
+
+dias <= 7
+|   quizes <= 1: True (59.0/2.0)
+|   quizes > 1
+|   |   foruns <= 0: False (2.0)
+|   |   foruns > 0: True (4.0/1.0)
+dias > 7
+|   dias <= 18
+|   |   leituras <= 4
+|   |   |   participacoes <= 1
+|   |   |   |   participacoes <= 0
+|   |   |   |   |   diasfora <= 24
+|   |   |   |   |   |   quizes <= 1
+|   |   |   |   |   |   |   diasfora <= 19
+|   |   |   |   |   |   |   |   quizes <= 0
+|   |   |   |   |   |   |   |   |   dias <= 10: False (2.0)
+|   |   |   |   |   |   |   |   |   dias > 10: True (2.0)
+|   |   |   |   |   |   |   |   quizes > 0: True (4.0)
+|   |   |   |   |   |   |   diasfora > 19: False (2.0)
+|   |   |   |   |   |   quizes > 1: True (4.0)
+|   |   |   |   |   diasfora > 24: False (3.0)
+|   |   |   |   participacoes > 0
+|   |   |   |   |   quizes <= 0: True (2.0)
+|   |   |   |   |   quizes > 0
+|   |   |   |   |   |   dias <= 10: False (7.0/1.0)
+|   |   |   |   |   |   dias > 10
+|   |   |   |   |   |   |   dias <= 14: True (7.0/1.0)
+|   |   |   |   |   |   |   dias > 14: False (3.0/1.0)
+|   |   |   participacoes > 1
+|   |   |   |   participacoes <= 4
+|   |   |   |   |   participacoes <= 3
+|   |   |   |   |   |   diasfora <= 19: False (5.0)
+|   |   |   |   |   |   diasfora > 19
+|   |   |   |   |   |   |   foruns <= 5: True (4.0)
+|   |   |   |   |   |   |   foruns > 5: False (4.0/1.0)
+|   |   |   |   |   participacoes > 3
+|   |   |   |   |   |   foruns <= 3
+|   |   |   |   |   |   |   leituras <= 3: True (2.0)
+|   |   |   |   |   |   |   leituras > 3: False (2.0)
+|   |   |   |   |   |   foruns > 3: False (13.0)
+|   |   |   |   participacoes > 4
+|   |   |   |   |   diasfora <= 26: True (3.0)
+|   |   |   |   |   diasfora > 26: False (2.0)
+|   |   leituras > 4: False (5.0)
+|   dias > 18: False (24.0)
+
+Number of Leaves  : 	23
+
+Size of the tree : 	45
+
+
+Time taken to build model: 0.05 seconds
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         158               95.7576 %
+Incorrectly Classified Instances         7                4.2424 %
+Kappa statistic                          0.9143
+Mean absolute error                      0.0705
+Root mean squared error                  0.1877
+Relative absolute error                 14.2085 %
+Root relative squared error             37.696  %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.947     0.033      0.959     0.947     0.953      0.984    False
+                 0.967     0.053      0.956     0.967     0.961      0.984    True
+Weighted Avg.    0.958     0.044      0.958     0.958     0.958      0.984
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 71  4 |  a = False
+  3 87 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         116               70.303  %
+Incorrectly Classified Instances        49               29.697  %
+Kappa statistic                          0.4004
+Mean absolute error                      0.3171
+Root mean squared error                  0.4695
+Relative absolute error                 63.9399 %
+Root relative squared error             94.2882 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.667     0.267      0.676     0.667     0.671      0.729    False
+                 0.733     0.333      0.725     0.733     0.729      0.729    True
+Weighted Avg.    0.703     0.303      0.703     0.703     0.703      0.729
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 50 25 |  a = False
+ 24 66 |  b = True
+

@@ -1,0 +1,19 @@
+weka_jar: '/home/santana/ambiente/weka/weka.jar'
+turma: '319'
+definicoes:
+- SemanalAcumulada_6-MediaFinal_2
+- SemanalAcumulada_6-UltimasSemanas_6x1
+- SemanalAcumulada_6-UltimasSemanas_6x1_reprovados
+- SemanalAcumulada_7-MediaFinal_2
+- SemanalAcumulada_7-UltimasSemanas_7x1
+- SemanalAcumulada_7-UltimasSemanas_7x1_reprovados
+- SemanalAcumulada_8-MediaFinal_2
+- SemanalAcumulada_8-UltimasSemanas_8x1
+- SemanalAcumulada_8-UltimasSemanas_8x1_reprovados
+- SemanalAcumulada_8-UltimasSemanas_8x2
+- SemanalAcumulada_8-UltimasSemanas_8x2_reprovados
+- SemanalAcumulada_9-MediaFinal_2
+- SemanalAcumulada_9-UltimasSemanas_9x1
+- SemanalAcumulada_9-UltimasSemanas_9x1_reprovados
+- SemanalAcumulada_9-UltimasSemanas_9x2
+- SemanalAcumulada_9-UltimasSemanas_9x2_reprovados

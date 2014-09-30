@@ -1,0 +1,75 @@
+
+Options: -I 0 -M 500 -H 50 -W 0.0 
+
+SimpleLogistic:
+
+Class 0 :
+-1.78 + 
+[dias] * 0.1  +
+[participacoes] * 0.11 +
+[quizes] * 0.29
+
+Class 1 :
+1.78 + 
+[dias] * -0.1 +
+[participacoes] * -0.11 +
+[quizes] * -0.29
+
+
+Time taken to build model: 0.26 seconds
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         127               76.9697 %
+Incorrectly Classified Instances        38               23.0303 %
+Kappa statistic                          0.5314
+Mean absolute error                      0.3185
+Root mean squared error                  0.3999
+Relative absolute error                 64.2295 %
+Root relative squared error             80.3127 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.693     0.167      0.776     0.693     0.732      0.848    False
+                 0.833     0.307      0.765     0.833     0.798      0.848    True
+Weighted Avg.    0.77      0.243      0.77      0.77      0.768      0.848
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 52 23 |  a = False
+ 15 75 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         121               73.3333 %
+Incorrectly Classified Instances        44               26.6667 %
+Kappa statistic                          0.4574
+Mean absolute error                      0.3306
+Root mean squared error                  0.4139
+Relative absolute error                 66.6477 %
+Root relative squared error             83.1071 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.653     0.2        0.731     0.653     0.69       0.825    False
+                 0.8       0.347      0.735     0.8       0.766      0.825    True
+Weighted Avg.    0.733     0.28       0.733     0.733     0.731      0.825
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 49 26 |  a = False
+ 18 72 |  b = True
+

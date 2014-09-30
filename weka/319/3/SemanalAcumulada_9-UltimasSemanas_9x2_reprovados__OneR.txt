@@ -1,0 +1,68 @@
+
+Options: -B 6 
+
+diasfora:
+	< 5.5	-> True
+	< 7.5	-> False
+	< 8.5	-> True
+	>= 8.5	-> False
+(113/165 instances correct)
+
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.02 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         113               68.4848 %
+Incorrectly Classified Instances        52               31.5152 %
+Kappa statistic                          0.3361
+Mean absolute error                      0.3152
+Root mean squared error                  0.5614
+Relative absolute error                 63.6984 %
+Root relative squared error            112.8773 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.89      0.568      0.659     0.89      0.757      0.661    False
+                 0.432     0.11       0.762     0.432     0.552      0.661    True
+Weighted Avg.    0.685     0.362      0.705     0.685     0.665      0.661
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 81 10 |  a = False
+ 42 32 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         102               61.8182 %
+Incorrectly Classified Instances        63               38.1818 %
+Kappa statistic                          0.2009
+Mean absolute error                      0.3818
+Root mean squared error                  0.6179
+Relative absolute error                 77.1586 %
+Root relative squared error            124.2202 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.802     0.608      0.619     0.802     0.699      0.597    False
+                 0.392     0.198      0.617     0.392     0.479      0.597    True
+Weighted Avg.    0.618     0.424      0.618     0.618     0.6        0.597
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 73 18 |  a = False
+ 45 29 |  b = True
+

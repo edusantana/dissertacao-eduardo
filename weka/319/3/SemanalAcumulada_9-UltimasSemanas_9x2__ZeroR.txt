@@ -1,0 +1,60 @@
+
+ZeroR predicts class value: True
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances          83               50.303  %
+Incorrectly Classified Instances        82               49.697  %
+Kappa statistic                          0     
+Mean absolute error                      0.5   
+Root mean squared error                  0.5   
+Relative absolute error                100      %
+Root relative squared error            100      %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0         0          0         0         0          0.5      False
+                 1         1          0.503     1         0.669      0.5      True
+Weighted Avg.    0.503     0.503      0.253     0.503     0.337      0.5  
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+  0 82 |  a = False
+  0 83 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances          80               48.4848 %
+Incorrectly Classified Instances        85               51.5152 %
+Kappa statistic                         -0.0327
+Mean absolute error                      0.5001
+Root mean squared error                  0.5001
+Relative absolute error                100      %
+Root relative squared error            100      %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.293     0.325      0.471     0.293     0.361      0.478    False
+                 0.675     0.707      0.491     0.675     0.569      0.478    True
+Weighted Avg.    0.485     0.517      0.481     0.485     0.465      0.478
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 24 58 |  a = False
+ 27 56 |  b = True
+

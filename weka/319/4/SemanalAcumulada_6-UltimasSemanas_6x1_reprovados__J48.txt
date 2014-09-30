@@ -1,0 +1,117 @@
+
+Options: -C 0.25 -M 2 
+
+J48 pruned tree
+------------------
+
+dias <= 12
+|   quizes <= 0: True (29.0/4.0)
+|   quizes > 0
+|   |   assigns <= 0
+|   |   |   participacoes <= 1
+|   |   |   |   diasfora <= 16
+|   |   |   |   |   diasfora <= 5: True (3.0)
+|   |   |   |   |   diasfora > 5
+|   |   |   |   |   |   dias <= 3: False (3.0)
+|   |   |   |   |   |   dias > 3: True (12.0/1.0)
+|   |   |   |   diasfora > 16: False (2.0)
+|   |   |   participacoes > 1: False (2.0)
+|   |   assigns > 0
+|   |   |   quizes <= 1
+|   |   |   |   leituras <= 2
+|   |   |   |   |   leituras <= 1
+|   |   |   |   |   |   diasfora <= 7: True (3.0)
+|   |   |   |   |   |   diasfora > 7
+|   |   |   |   |   |   |   dias <= 5: False (6.0)
+|   |   |   |   |   |   |   dias > 5
+|   |   |   |   |   |   |   |   dias <= 6: True (3.0)
+|   |   |   |   |   |   |   |   dias > 6: False (8.0/2.0)
+|   |   |   |   |   leituras > 1
+|   |   |   |   |   |   dias <= 4: False (2.0)
+|   |   |   |   |   |   dias > 4
+|   |   |   |   |   |   |   diasfora <= 15
+|   |   |   |   |   |   |   |   dias <= 8
+|   |   |   |   |   |   |   |   |   diasfora <= 14
+|   |   |   |   |   |   |   |   |   |   diasfora <= 11: True (3.0)
+|   |   |   |   |   |   |   |   |   |   diasfora > 11: False (2.0)
+|   |   |   |   |   |   |   |   |   diasfora > 14: True (3.0)
+|   |   |   |   |   |   |   |   dias > 8: False (4.0/1.0)
+|   |   |   |   |   |   |   diasfora > 15: True (10.0/1.0)
+|   |   |   |   leituras > 2
+|   |   |   |   |   participacoes <= 3
+|   |   |   |   |   |   leituras <= 3
+|   |   |   |   |   |   |   diasfora <= 10: True (2.0)
+|   |   |   |   |   |   |   diasfora > 10
+|   |   |   |   |   |   |   |   foruns <= 4: False (8.0)
+|   |   |   |   |   |   |   |   foruns > 4: True (4.0/1.0)
+|   |   |   |   |   |   leituras > 3: True (2.0)
+|   |   |   |   |   participacoes > 3: False (6.0)
+|   |   |   quizes > 1
+|   |   |   |   leituras <= 1
+|   |   |   |   |   dias <= 5: False (2.0)
+|   |   |   |   |   dias > 5: True (4.0)
+|   |   |   |   leituras > 1: False (16.0/3.0)
+dias > 12: False (26.0/1.0)
+
+Number of Leaves  : 	25
+
+Size of the tree : 	49
+
+
+Time taken to build model: 0.07 seconds
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         151               91.5152 %
+Incorrectly Classified Instances        14                8.4848 %
+Kappa statistic                          0.8298
+Mean absolute error                      0.1414
+Root mean squared error                  0.2659
+Relative absolute error                 28.3597 %
+Root relative squared error             53.2548 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.92      0.09       0.92      0.92      0.92       0.958    False
+                 0.91      0.08       0.91      0.91      0.91       0.958    True
+Weighted Avg.    0.915     0.085      0.915     0.915     0.915      0.958
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 80  7 |  a = False
+  7 71 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         105               63.6364 %
+Incorrectly Classified Instances        60               36.3636 %
+Kappa statistic                          0.2754
+Mean absolute error                      0.3879
+Root mean squared error                  0.539 
+Relative absolute error                 77.7928 %
+Root relative squared error            107.9352 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.598     0.321      0.675     0.598     0.634      0.656    False
+                 0.679     0.402      0.602     0.679     0.639      0.656    True
+Weighted Avg.    0.636     0.359      0.641     0.636     0.636      0.656
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 52 35 |  a = False
+ 25 53 |  b = True
+

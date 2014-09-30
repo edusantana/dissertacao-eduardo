@@ -1,0 +1,79 @@
+
+Options: -C 0.25 -M 2 
+
+J48 pruned tree
+------------------
+
+participacoes <= 0
+|   foruns <= 0: False (116.0/43.0)
+|   foruns > 0
+|   |   dias <= 1: True (14.0/4.0)
+|   |   dias > 1: False (11.0/3.0)
+participacoes > 0
+|   foruns <= 1: True (7.0/2.0)
+|   foruns > 1
+|   |   leituras <= 0: True (2.0)
+|   |   leituras > 0: False (15.0/2.0)
+
+Number of Leaves  : 	6
+
+Size of the tree : 	11
+
+
+Time taken to build model: 0.04 seconds
+Time taken to test model on training data: 0.02 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         111               67.2727 %
+Incorrectly Classified Instances        54               32.7273 %
+Kappa statistic                          0.2272
+Mean absolute error                      0.4274
+Root mean squared error                  0.4623
+Relative absolute error                 89.4587 %
+Root relative squared error             94.609  %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.94      0.738      0.662     0.94      0.777      0.645    False
+                 0.262     0.06       0.739     0.262     0.386      0.645    True
+Weighted Avg.    0.673     0.471      0.692     0.673     0.623      0.645
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 94  6 |  a = False
+ 48 17 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances          99               60      %
+Incorrectly Classified Instances        66               40      %
+Kappa statistic                          0.0497
+Mean absolute error                      0.4725
+Root mean squared error                  0.5151
+Relative absolute error                 98.8809 %
+Root relative squared error            105.3951 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.89      0.846      0.618     0.89      0.73       0.478    False
+                 0.154     0.11       0.476     0.154     0.233      0.478    True
+Weighted Avg.    0.6       0.556      0.562     0.6       0.534      0.478
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 89 11 |  a = False
+ 55 10 |  b = True
+

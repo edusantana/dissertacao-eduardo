@@ -1,0 +1,66 @@
+
+Options: -B 6 
+
+diasfora:
+	< 16.5	-> True
+	>= 16.5	-> False
+(150/165 instances correct)
+
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.02 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         150               90.9091 %
+Incorrectly Classified Instances        15                9.0909 %
+Kappa statistic                          0.806 
+Mean absolute error                      0.0909
+Root mean squared error                  0.3015
+Relative absolute error                 19.0277 %
+Root relative squared error             61.7063 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.96      0.169      0.897     0.96      0.928      0.895    False
+                 0.831     0.04       0.931     0.831     0.878      0.895    True
+Weighted Avg.    0.909     0.118      0.911     0.909     0.908      0.895
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 96  4 |  a = False
+ 11 54 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         147               89.0909 %
+Incorrectly Classified Instances        18               10.9091 %
+Kappa statistic                          0.7665
+Mean absolute error                      0.1091
+Root mean squared error                  0.3303
+Relative absolute error                 22.829  %
+Root relative squared error             67.5848 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.95      0.2        0.88      0.95      0.913      0.875    False
+                 0.8       0.05       0.912     0.8       0.852      0.875    True
+Weighted Avg.    0.891     0.141      0.892     0.891     0.889      0.875
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 95  5 |  a = False
+ 13 52 |  b = True
+

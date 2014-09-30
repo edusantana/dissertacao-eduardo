@@ -1,0 +1,60 @@
+
+ZeroR predicts class value: False
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances          99               60      %
+Incorrectly Classified Instances        66               40      %
+Kappa statistic                          0     
+Mean absolute error                      0.4802
+Root mean squared error                  0.4899
+Relative absolute error                100      %
+Root relative squared error            100      %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 1         1          0.6       1         0.75       0.5      False
+                 0         0          0         0         0          0.5      True
+Weighted Avg.    0.6       0.6        0.36      0.6       0.45       0.5  
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 99  0 |  a = False
+ 66  0 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances          99               60      %
+Incorrectly Classified Instances        66               40      %
+Kappa statistic                          0     
+Mean absolute error                      0.4804
+Root mean squared error                  0.49  
+Relative absolute error                100      %
+Root relative squared error            100      %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 1         1          0.6       1         0.75       0.477    False
+                 0         0          0         0         0          0.477    True
+Weighted Avg.    0.6       0.6        0.36      0.6       0.45       0.477
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 99  0 |  a = False
+ 66  0 |  b = True
+

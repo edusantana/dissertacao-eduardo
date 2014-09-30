@@ -1,0 +1,89 @@
+
+Options: -C 0.25 -M 2 
+
+J48 pruned tree
+------------------
+
+assigns <= 0
+|   quizes <= 0: True (25.0/9.0)
+|   quizes > 0
+|   |   foruns <= 0: True (4.0)
+|   |   foruns > 0: False (8.0/1.0)
+assigns > 0
+|   dias <= 2
+|   |   diasfora <= 4: True (5.0)
+|   |   diasfora > 4
+|   |   |   foruns <= 1: False (5.0/1.0)
+|   |   |   foruns > 1: True (2.0)
+|   dias > 2
+|   |   participacoes <= 0
+|   |   |   foruns <= 6: False (39.0/11.0)
+|   |   |   foruns > 6: True (2.0)
+|   |   participacoes > 0
+|   |   |   quizes <= 0: False (24.0/6.0)
+|   |   |   quizes > 0
+|   |   |   |   foruns <= 1: True (4.0)
+|   |   |   |   foruns > 1: False (47.0/5.0)
+
+Number of Leaves  : 	11
+
+Size of the tree : 	21
+
+
+Time taken to build model: 0.07 seconds
+Time taken to test model on training data: 0.02 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         132               80      %
+Incorrectly Classified Instances        33               20      %
+Kappa statistic                          0.5284
+Mean absolute error                      0.2946
+Root mean squared error                  0.3838
+Relative absolute error                 65.0507 %
+Root relative squared error             80.7044 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.917     0.421      0.805     0.917     0.857      0.812    False
+                 0.579     0.083      0.786     0.579     0.667      0.812    True
+Weighted Avg.    0.8       0.304      0.798     0.8       0.791      0.812
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 99  9 |  a = False
+ 24 33 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         108               65.4545 %
+Incorrectly Classified Instances        57               34.5455 %
+Kappa statistic                          0.1633
+Mean absolute error                      0.4125
+Root mean squared error                  0.4976
+Relative absolute error                 91.0602 %
+Root relative squared error            104.6131 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.833     0.684      0.698     0.833     0.759      0.565    False
+                 0.316     0.167      0.5       0.316     0.387      0.565    True
+Weighted Avg.    0.655     0.505      0.629     0.655     0.631      0.565
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 90 18 |  a = False
+ 39 18 |  b = True
+

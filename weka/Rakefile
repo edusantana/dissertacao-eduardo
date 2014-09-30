@@ -1,0 +1,150 @@
+require 'yaml'
+
+config = YAML.load_file("config/weka.yml") # From file
+turma = config['turma']
+semanas = (1..18)
+
+javaexec = "java -cp #{config['weka_jar']}"
+
+desc '319'
+file 'X319/SemanalAcumulada_6-MediaFinal_2.arff' => ['319/SemanalAcumulada_18.csv'] do
+  #puts config['definicoes']
+  `#{javaexec} weka.core.converters.CSVLoader 319/SemanalAcumulada_18.csv > filename.arff`
+  #java weka.core.converters.CSVLoader filename.csv > filename.arff
+end
+
+desc 'Exibe turma atual'
+task :turma do
+  puts config['turma']
+end
+
+
+desc 'Converte arquivos csv para arff.'
+task :csv2arff
+
+config['definicoes'].each do |definicao|
+  csvfile =  "../#{turma}/#{definicao}.csv"
+  csvtempfile = "#{turma}/#{definicao}.csv"
+  arfffile = "#{turma}/#{definicao}-original.arff"
+  filtered = "#{turma}/#{definicao}.arff"
+  file arfffile => [csvfile] do |task|
+    puts "Criando #{task.name}"
+    cp task.prerequisites.first, csvtempfile
+    `sed -i -e 's/;/,/g' #{csvtempfile}` # converte ';' para ','
+    `#{javaexec} weka.core.converters.CSVLoader #{csvtempfile} > #{task.name}`
+    rm_rf csvtempfile
+  end
+  file filtered => [arfffile] do |task|
+    puts "Criando #{filtered}"
+    # remove matricula e total
+    `#{javaexec} weka.filters.unsupervised.attribute.Remove -R "1,10" -i #{task.prerequisites.first} -o #{task.name}`
+  end
+
+  task :csv2arff => [arfffile, filtered]
+
+end
+
+desc 'Cria datasets separados filtrados por semana'
+task :filtrasemana
+
+semanas.each do |semana|
+  semana_dir = "#{turma}/#{semana}"
+  directory semana_dir
+
+  config['definicoes'].each do |definicao|
+    file "#{turma}/#{semana}/#{definicao}.arff" => [semana_dir,"#{turma}/#{definicao}.arff"] do |t|
+      `#{javaexec} weka.filters.unsupervised.instance.SubsetByExpression -E '(ATT1=#{semana})' -i #{turma}/#{definicao}.arff -o #{turma}/#{semana}/#{definicao}.arff`
+    end
+    
+    task :filtrasemana => ["#{turma}/#{semana}/#{definicao}.arff"]
+  end
+end
+
+
+desc "Executa ZeroR em todas as definições da turma atual. O resultado é salvo no arquivo 'turma/semana/definicao__ZeroR.txt'."
+task :ZeroR
+
+desc "Executa OneR em todas as definições da turma atual. O resultado é salvo no arquivo 'turma/semana/definicao__OneR.txt'."
+task :OneR
+
+desc "Executa J48 em todas as definições da turma atual. O resultado é salvo no arquivo 'turma/semana/definicao__J48.txt'."
+task :J48
+
+desc "Executa NaiveBayes em todas as definições da turma atual."
+task :NaiveBayes
+
+desc "Executa SMO (support vector) em todas as definições da turma atual."
+task :SMO
+
+desc "Executa SimpleLogistic (linear logistic regression) em todas as definições da turma atual."
+task :SimpleLogistic
+
+desc "Executa todos os classificadores."
+multitask :classificadores => [:filtrasemana, :ZeroR, :OneR, :J48, :NaiveBayes, :SMO, :SimpleLogistic]
+
+semanas.each do |semana|
+  semana_dir = "#{turma}/#{semana}"
+
+  config['definicoes'].each do |definicao|
+    train = "#{turma}/#{semana}/#{definicao}.arff"
+    tail_cmd = "-t #{train} -i -x 10"
+
+    outputZeroR = "#{turma}/#{semana}/#{definicao}__ZeroR.txt"
+    classificadorZeroR = %Q( weka.classifiers.rules.ZeroR )
+    file outputZeroR => [train] do |t|
+      `#{javaexec} #{classificadorZeroR} #{tail_cmd} > #{t.name}`
+    end
+    task :ZeroR => [outputZeroR]
+
+    outputOneR = "#{turma}/#{semana}/#{definicao}__OneR.txt"
+    classificadorOneR = %Q( weka.classifiers.rules.OneR -B 6 )
+    file outputOneR => [train] do |t|
+      `#{javaexec} #{classificadorOneR} #{tail_cmd} > #{t.name}`
+    end
+    task :OneR => [outputOneR]
+
+    outputJ48 = "#{turma}/#{semana}/#{definicao}__J48.txt"
+    classificadorJ48 = %Q( weka.classifiers.trees.J48 -C 0.25 -M 2 )
+    file outputJ48 => [train] do |t|
+      `#{javaexec} #{classificadorJ48} #{tail_cmd} > #{t.name}`
+    end
+    task :J48 => [outputJ48]
+
+    outputNaiveBayes = "#{turma}/#{semana}/#{definicao}__NaiveBayes.txt"
+    classificadorNaiveBayes = %Q( weka.classifiers.bayes.NaiveBayes )
+    file outputNaiveBayes => [train] do |t|
+      `#{javaexec} #{classificadorNaiveBayes} #{tail_cmd} > #{t.name}`
+    end
+    task :NaiveBayes => [outputNaiveBayes]
+
+    outputSMO = "#{turma}/#{semana}/#{definicao}__SMO.txt"
+    classificadorSMO = %Q( weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -C 250007 -E 1.0" )
+    file outputSMO => [train] do |t|
+      `#{javaexec} #{classificadorSMO} #{tail_cmd} > #{t.name}`
+    end
+    task :SMO => [outputSMO]
+
+    outputSimpleLogistic = "#{turma}/#{semana}/#{definicao}__SimpleLogistic.txt"
+    classificadorSimpleLogistic = %Q( weka.classifiers.functions.SimpleLogistic -I 0 -M 500 -H 50 -W 0.0 )
+    file outputSimpleLogistic => [train] do |t|
+      `#{javaexec} #{classificadorSimpleLogistic} #{tail_cmd} > #{t.name}`
+    end
+    task :SimpleLogistic => [outputSimpleLogistic]
+
+  end
+end
+
+desc "x test"
+task :x do |t|
+  train = "319/10/SemanalAcumulada_6-MediaFinal_2.arff"
+  classificador = %Q( weka.classifiers.functions.SimpleLogistic -I 0 -M 500 -H 50 -W 0.0 )
+  `#{javaexec} #{classificador} -t #{train} -i -x 10`
+end
+
+# java -cp /home/santana/ambiente/weka/weka.jar weka.classifiers.rules.OneR -B 6 -t 319/10/SemanalAcumulada_6-MediaFinal_2.arff
+# java -cp /home/santana/ambiente/weka/weka.jar 319/10/SemanalAcumulada_6-MediaFinal_2.arff
+
+#  java weka.classifiers.meta.FilteredClassifier \
+#   -F weka.filters.unsupervised.attribute.RemoveType \
+#   -W weka.classifiers.trees.J48 \
+#   -t train.arff -T test.arff -p 5

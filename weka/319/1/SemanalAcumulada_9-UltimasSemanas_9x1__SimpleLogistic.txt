@@ -1,0 +1,69 @@
+
+Options: -I 0 -M 500 -H 50 -W 0.0 
+
+SimpleLogistic:
+
+Class 0 :
+0    + 
+
+Class 1 :
+0    + 
+
+
+Time taken to build model: 0.26 seconds
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances          99               60      %
+Incorrectly Classified Instances        66               40      %
+Kappa statistic                          0     
+Mean absolute error                      0.5   
+Root mean squared error                  0.5   
+Relative absolute error                104.1147 %
+Root relative squared error            102.0618 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 1         1          0.6       1         0.75       0.5      False
+                 0         0          0         0         0          0.5      True
+Weighted Avg.    0.6       0.6        0.36      0.6       0.45       0.5  
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 99  0 |  a = False
+ 66  0 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances          96               58.1818 %
+Incorrectly Classified Instances        69               41.8182 %
+Kappa statistic                         -0.036 
+Mean absolute error                      0.4985
+Root mean squared error                  0.5023
+Relative absolute error                103.7804 %
+Root relative squared error            102.505  %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.97      1          0.593     0.97      0.736      0.463    False
+                 0         0.03       0         0         0          0.463    True
+Weighted Avg.    0.582     0.612      0.356     0.582     0.441      0.463
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 96  3 |  a = False
+ 66  0 |  b = True
+

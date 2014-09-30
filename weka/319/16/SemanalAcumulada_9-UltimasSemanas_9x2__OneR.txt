@@ -1,0 +1,66 @@
+
+Options: -B 6 
+
+dias:
+	< 10.5	-> True
+	>= 10.5	-> False
+(153/165 instances correct)
+
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.02 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         153               92.7273 %
+Incorrectly Classified Instances        12                7.2727 %
+Kappa statistic                          0.8546
+Mean absolute error                      0.0727
+Root mean squared error                  0.2697
+Relative absolute error                 14.546  %
+Root relative squared error             53.937  %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.951     0.096      0.907     0.951     0.929      0.927    False
+                 0.904     0.049      0.949     0.904     0.926      0.927    True
+Weighted Avg.    0.927     0.072      0.928     0.927     0.927      0.927
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 78  4 |  a = False
+  8 75 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         151               91.5152 %
+Incorrectly Classified Instances        14                8.4848 %
+Kappa statistic                          0.8304
+Mean absolute error                      0.0848
+Root mean squared error                  0.2913
+Relative absolute error                 16.967  %
+Root relative squared error             58.2464 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.951     0.12       0.886     0.951     0.918      0.915    False
+                 0.88      0.049      0.948     0.88      0.913      0.915    True
+Weighted Avg.    0.915     0.084      0.917     0.915     0.915      0.915
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 78  4 |  a = False
+ 10 73 |  b = True
+

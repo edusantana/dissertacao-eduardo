@@ -1,0 +1,69 @@
+
+Options: -I 0 -M 500 -H 50 -W 0.0 
+
+SimpleLogistic:
+
+Class 0 :
+0    + 
+
+Class 1 :
+0    + 
+
+
+Time taken to build model: 0.26 seconds
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         100               60.6061 %
+Incorrectly Classified Instances        65               39.3939 %
+Kappa statistic                          0     
+Mean absolute error                      0.5   
+Root mean squared error                  0.5   
+Relative absolute error                104.6525 %
+Root relative squared error            102.3283 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 1         1          0.606     1         0.755      0.5      False
+                 0         0          0         0         0          0.5      True
+Weighted Avg.    0.606     0.606      0.367     0.606     0.457      0.5  
+
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 100   0 |   a = False
+  65   0 |   b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         100               60.6061 %
+Incorrectly Classified Instances        65               39.3939 %
+Kappa statistic                          0     
+Mean absolute error                      0.5   
+Root mean squared error                  0.5   
+Relative absolute error                104.633  %
+Root relative squared error            102.3116 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 1         1          0.606     1         0.755      0.5      False
+                 0         0          0         0         0          0.5      True
+Weighted Avg.    0.606     0.606      0.367     0.606     0.457      0.5  
+
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 100   0 |   a = False
+  65   0 |   b = True
+

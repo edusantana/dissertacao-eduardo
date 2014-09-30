@@ -1,0 +1,84 @@
+
+Options: -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -C 250007 -E 1.0" 
+
+SMO
+
+Kernel used:
+  Linear Kernel: K(x,y) = <x,y>
+
+Classifier for classes: False, True
+
+BinarySMO
+
+Machine linear: showing attribute weights, not support vectors.
+
+        -0.9367 * (normalized) dias
+ +      -1.2497 * (normalized) diasfora
+ +      -0.5193 * (normalized) foruns
+ +      -1.672  * (normalized) leituras
+ +      -1.079  * (normalized) participacoes
+ +      -1.3526 * (normalized) assigns
+ +      -1.6136 * (normalized) quizes
+ +       2.1748
+
+Number of kernel evaluations: 1589 (69.324% cached)
+
+
+
+Time taken to build model: 0.04 seconds
+Time taken to test model on training data: 0.02 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         147               89.0909 %
+Incorrectly Classified Instances        18               10.9091 %
+Kappa statistic                          0.7789
+Mean absolute error                      0.1091
+Root mean squared error                  0.3303
+Relative absolute error                 22.0494 %
+Root relative squared error             66.4112 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.912     0.135      0.892     0.912     0.902      0.888    False
+                 0.865     0.088      0.889     0.865     0.877      0.888    True
+Weighted Avg.    0.891     0.114      0.891     0.891     0.891      0.888
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 83  8 |  a = False
+ 10 64 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         146               88.4848 %
+Incorrectly Classified Instances        19               11.5152 %
+Kappa statistic                          0.7669
+Mean absolute error                      0.1152
+Root mean squared error                  0.3393
+Relative absolute error                 23.2701 %
+Root relative squared error             68.218  %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.901     0.135      0.891     0.901     0.896      0.883    False
+                 0.865     0.099      0.877     0.865     0.871      0.883    True
+Weighted Avg.    0.885     0.119      0.885     0.885     0.885      0.883
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 82  9 |  a = False
+ 10 64 |  b = True
+

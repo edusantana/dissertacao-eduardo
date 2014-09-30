@@ -1,0 +1,105 @@
+
+Options: -C 0.25 -M 2 
+
+J48 pruned tree
+------------------
+
+participacoes <= 1
+|   quizes <= 0: True (21.0/2.0)
+|   quizes > 0
+|   |   quizes <= 1
+|   |   |   dias <= 13
+|   |   |   |   foruns <= 3
+|   |   |   |   |   participacoes <= 0
+|   |   |   |   |   |   foruns <= 0: True (3.0)
+|   |   |   |   |   |   foruns > 0
+|   |   |   |   |   |   |   assigns <= 0
+|   |   |   |   |   |   |   |   diasfora <= 13: True (3.0)
+|   |   |   |   |   |   |   |   diasfora > 13: False (2.0)
+|   |   |   |   |   |   |   assigns > 0
+|   |   |   |   |   |   |   |   dias <= 7: False (2.0)
+|   |   |   |   |   |   |   |   dias > 7: True (4.0/1.0)
+|   |   |   |   |   participacoes > 0: False (6.0/1.0)
+|   |   |   |   foruns > 3: True (12.0)
+|   |   |   dias > 13: False (3.0)
+|   |   quizes > 1
+|   |   |   assigns <= 0
+|   |   |   |   dias <= 4: False (2.0)
+|   |   |   |   dias > 4: True (6.0)
+|   |   |   assigns > 0
+|   |   |   |   dias <= 13
+|   |   |   |   |   leituras <= 1
+|   |   |   |   |   |   diasfora <= 18: True (3.0)
+|   |   |   |   |   |   diasfora > 18: False (2.0)
+|   |   |   |   |   leituras > 1: False (18.0/2.0)
+|   |   |   |   dias > 13: True (3.0)
+participacoes > 1
+|   foruns <= 2
+|   |   quizes <= 1: True (5.0)
+|   |   quizes > 1
+|   |   |   dias <= 7: False (2.0)
+|   |   |   dias > 7: True (2.0)
+|   foruns > 2: False (66.0/6.0)
+
+Number of Leaves  : 	19
+
+Size of the tree : 	37
+
+
+Time taken to build model: 0.06 seconds
+Time taken to test model on training data: 0.02 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         153               92.7273 %
+Incorrectly Classified Instances        12                7.2727 %
+Kappa statistic                          0.8479
+Mean absolute error                      0.1288
+Root mean squared error                  0.2538
+Relative absolute error                 26.5689 %
+Root relative squared error             51.5548 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.969     0.132      0.913     0.969     0.94       0.941    False
+                 0.868     0.031      0.952     0.868     0.908      0.941    True
+Weighted Avg.    0.927     0.091      0.929     0.927     0.927      0.941
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 94  3 |  a = False
+  9 59 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         119               72.1212 %
+Incorrectly Classified Instances        46               27.8788 %
+Kappa statistic                          0.417 
+Mean absolute error                      0.3105
+Root mean squared error                  0.4778
+Relative absolute error                 64.0306 %
+Root relative squared error             97.0564 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.794     0.382      0.748     0.794     0.77       0.716    False
+                 0.618     0.206      0.677     0.618     0.646      0.716    True
+Weighted Avg.    0.721     0.31       0.719     0.721     0.719      0.716
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 77 20 |  a = False
+ 26 42 |  b = True
+

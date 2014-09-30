@@ -1,0 +1,73 @@
+
+Options: -C 0.25 -M 2 
+
+J48 pruned tree
+------------------
+
+participacoes <= 1: True (72.0/14.0)
+participacoes > 1
+|   diasfora <= 12: True (6.0/1.0)
+|   diasfora > 12: False (87.0/15.0)
+
+Number of Leaves  : 	3
+
+Size of the tree : 	5
+
+
+Time taken to build model: 0.05 seconds
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         135               81.8182 %
+Incorrectly Classified Instances        30               18.1818 %
+Kappa statistic                          0.6353
+Mean absolute error                      0.2973
+Root mean squared error                  0.3855
+Relative absolute error                 59.6296 %
+Root relative squared error             77.2216 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.828     0.192      0.828     0.828     0.828      0.819    False
+                 0.808     0.172      0.808     0.808     0.808      0.819    True
+Weighted Avg.    0.818     0.183      0.818     0.818     0.818      0.819
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 72 15 |  a = False
+ 15 63 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         126               76.3636 %
+Incorrectly Classified Instances        39               23.6364 %
+Kappa statistic                          0.5249
+Mean absolute error                      0.3344
+Root mean squared error                  0.4368
+Relative absolute error                 67.0586 %
+Root relative squared error             87.4812 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.793     0.269      0.767     0.793     0.78       0.716    False
+                 0.731     0.207      0.76      0.731     0.745      0.716    True
+Weighted Avg.    0.764     0.24       0.764     0.764     0.763      0.716
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 69 18 |  a = False
+ 21 57 |  b = True
+

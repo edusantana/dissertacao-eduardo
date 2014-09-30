@@ -1,0 +1,67 @@
+
+Options: -B 6 
+
+diasfora:
+	< 3.5	-> False
+	< 4.5	-> True
+	>= 4.5	-> False
+(104/165 instances correct)
+
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         104               63.0303 %
+Incorrectly Classified Instances        61               36.9697 %
+Kappa statistic                          0.119 
+Mean absolute error                      0.3697
+Root mean squared error                  0.608 
+Relative absolute error                 77.3794 %
+Root relative squared error            124.4368 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.92      0.815      0.634     0.92      0.751      0.552    False
+                 0.185     0.08       0.6       0.185     0.282      0.552    True
+Weighted Avg.    0.63      0.526      0.621     0.63      0.566      0.552
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 92  8 |  a = False
+ 53 12 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances          89               53.9394 %
+Incorrectly Classified Instances        76               46.0606 %
+Kappa statistic                         -0.0494
+Mean absolute error                      0.4606
+Root mean squared error                  0.6787
+Relative absolute error                 96.3892 %
+Root relative squared error            138.8736 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.77      0.815      0.592     0.77      0.67       0.477    False
+                 0.185     0.23       0.343     0.185     0.24       0.477    True
+Weighted Avg.    0.539     0.585      0.494     0.539     0.5        0.477
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 77 23 |  a = False
+ 53 12 |  b = True
+

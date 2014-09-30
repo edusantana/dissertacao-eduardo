@@ -1,0 +1,79 @@
+
+Options: -C 0.25 -M 2 
+
+J48 pruned tree
+------------------
+
+leituras <= 0: True (128.0/62.0)
+leituras > 0
+|   dias <= 1: True (10.0/2.0)
+|   dias > 1
+|   |   foruns <= 1
+|   |   |   diasfora <= 2: True (4.0)
+|   |   |   diasfora > 2
+|   |   |   |   dias <= 2: False (5.0/1.0)
+|   |   |   |   dias > 2: True (2.0)
+|   |   foruns > 1: False (16.0/2.0)
+
+Number of Leaves  : 	6
+
+Size of the tree : 	11
+
+
+Time taken to build model: 0.05 seconds
+Time taken to test model on training data: 0.02 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances          98               59.3939 %
+Incorrectly Classified Instances        67               40.6061 %
+Kappa statistic                          0.1842
+Mean absolute error                      0.4378
+Root mean squared error                  0.4679
+Relative absolute error                 87.5638 %
+Root relative squared error             93.5755 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.22      0.036      0.857     0.22      0.35       0.647    False
+                 0.964     0.78       0.556     0.964     0.705      0.647    True
+Weighted Avg.    0.594     0.411      0.705     0.594     0.528      0.647
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 18 64 |  a = False
+  3 80 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances          77               46.6667 %
+Incorrectly Classified Instances        88               53.3333 %
+Kappa statistic                         -0.0686
+Mean absolute error                      0.5049
+Root mean squared error                  0.531 
+Relative absolute error                100.9669 %
+Root relative squared error            106.1699 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.317     0.386      0.448     0.317     0.371      0.448    False
+                 0.614     0.683      0.477     0.614     0.537      0.448    True
+Weighted Avg.    0.467     0.535      0.463     0.467     0.455      0.448
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 26 56 |  a = False
+ 32 51 |  b = True
+

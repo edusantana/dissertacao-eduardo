@@ -1,0 +1,114 @@
+
+Naive Bayes Classifier
+
+                  Class
+Attribute         False    True
+                 (0.55)  (0.45)
+================================
+semana
+  mean                 4       4
+  std. dev.       0.0017  0.0017
+  weight sum          91      74
+  precision         0.01    0.01
+
+dias
+  mean            9.3036  5.8698
+  std. dev.       4.1841  3.1152
+  weight sum          91      74
+  precision       1.1053  1.1053
+
+diasfora
+  mean           14.6971 10.7795
+  std. dev.       4.8246  4.7982
+  weight sum          91      74
+  precision         1.04    1.04
+
+foruns
+  mean            4.3077  2.7862
+  std. dev.       2.8098  2.1407
+  weight sum          91      74
+  precision       1.2727  1.2727
+
+leituras
+  mean            2.3077  1.6216
+  std. dev.       1.0345  0.9823
+  weight sum          91      74
+  precision            1       1
+
+participacoes
+  mean            1.9945  0.9122
+  std. dev.        2.122  1.2285
+  weight sum          91      74
+  precision          1.5     1.5
+
+assigns
+  mean            1.1099  0.8108
+  std. dev.       0.5827  0.6713
+  weight sum          91      74
+  precision            1       1
+
+quizes
+  mean            1.2527  0.7973
+  std. dev.       0.5466  0.6363
+  weight sum          91      74
+  precision            1       1
+
+
+
+Time taken to build model: 0.02 seconds
+Time taken to test model on training data: 0.03 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         110               66.6667 %
+Incorrectly Classified Instances        55               33.3333 %
+Kappa statistic                          0.342 
+Mean absolute error                      0.3304
+Root mean squared error                  0.4857
+Relative absolute error                 66.773  %
+Root relative squared error             97.6525 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.593     0.243      0.75      0.593     0.663      0.768    False
+                 0.757     0.407      0.602     0.757     0.671      0.768    True
+Weighted Avg.    0.667     0.317      0.684     0.667     0.666      0.768
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 54 37 |  a = False
+ 18 56 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         110               66.6667 %
+Incorrectly Classified Instances        55               33.3333 %
+Kappa statistic                          0.3403
+Mean absolute error                      0.3399
+Root mean squared error                  0.4953
+Relative absolute error                 68.6961 %
+Root relative squared error             99.5711 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.604     0.257      0.743     0.604     0.667      0.748    False
+                 0.743     0.396      0.604     0.743     0.667      0.748    True
+Weighted Avg.    0.667     0.319      0.681     0.667     0.667      0.748
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 55 36 |  a = False
+ 19 55 |  b = True
+

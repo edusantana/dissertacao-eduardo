@@ -1,0 +1,66 @@
+
+Options: -B 6 
+
+dias:
+	< 8.5	-> True
+	>= 8.5	-> False
+(147/165 instances correct)
+
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         147               89.0909 %
+Incorrectly Classified Instances        18               10.9091 %
+Kappa statistic                          0.7795
+Mean absolute error                      0.1091
+Root mean squared error                  0.3303
+Relative absolute error                 21.9978 %
+Root relative squared error             66.3325 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.867     0.089      0.89      0.867     0.878      0.889    False
+                 0.911     0.133      0.891     0.911     0.901      0.889    True
+Weighted Avg.    0.891     0.113      0.891     0.891     0.891      0.889
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 65 10 |  a = False
+  8 82 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         143               86.6667 %
+Incorrectly Classified Instances        22               13.3333 %
+Kappa statistic                          0.7323
+Mean absolute error                      0.1333
+Root mean squared error                  0.3651
+Relative absolute error                 26.883  %
+Root relative squared error             73.324  %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.88      0.144      0.835     0.88      0.857      0.868    False
+                 0.856     0.12       0.895     0.856     0.875      0.868    True
+Weighted Avg.    0.867     0.131      0.868     0.867     0.867      0.868
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 66  9 |  a = False
+ 13 77 |  b = True
+

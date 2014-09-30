@@ -1,0 +1,68 @@
+
+Options: -B 6 
+
+dias:
+	< 4.5	-> True
+	< 6.5	-> False
+	< 8.5	-> True
+	>= 8.5	-> False
+(138/165 instances correct)
+
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.02 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         138               83.6364 %
+Incorrectly Classified Instances        27               16.3636 %
+Kappa statistic                          0.6672
+Mean absolute error                      0.1636
+Root mean squared error                  0.4045
+Relative absolute error                 32.8716 %
+Root relative squared error             81.0843 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.932     0.273      0.796     0.932     0.859      0.83     False
+                 0.727     0.068      0.903     0.727     0.806      0.83     True
+Weighted Avg.    0.836     0.177      0.846     0.836     0.834      0.83 
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 82  6 |  a = False
+ 21 56 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances         133               80.6061 %
+Incorrectly Classified Instances        32               19.3939 %
+Kappa statistic                          0.6053
+Mean absolute error                      0.1939
+Root mean squared error                  0.4404
+Relative absolute error                 38.951  %
+Root relative squared error             88.2548 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.909     0.312      0.769     0.909     0.833      0.799    False
+                 0.688     0.091      0.869     0.688     0.768      0.799    True
+Weighted Avg.    0.806     0.209      0.816     0.806     0.803      0.799
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 80  8 |  a = False
+ 24 53 |  b = True
+

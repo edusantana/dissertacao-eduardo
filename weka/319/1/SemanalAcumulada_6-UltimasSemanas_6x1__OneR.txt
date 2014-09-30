@@ -1,0 +1,66 @@
+
+Options: -B 6 
+
+dias:
+	< 1.5	-> True
+	>= 1.5	-> False
+(96/165 instances correct)
+
+
+Time taken to build model: 0.01 seconds
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances          96               58.1818 %
+Incorrectly Classified Instances        69               41.8182 %
+Kappa statistic                          0.1164
+Mean absolute error                      0.4182
+Root mean squared error                  0.6467
+Relative absolute error                 84.3249 %
+Root relative squared error            129.8717 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.267     0.156      0.588     0.267     0.367      0.556    False
+                 0.844     0.733      0.58      0.844     0.688      0.556    True
+Weighted Avg.    0.582     0.471      0.584     0.582     0.542      0.556
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 20 55 |  a = False
+ 14 76 |  b = True
+
+
+
+=== Stratified cross-validation ===
+
+Correctly Classified Instances          85               51.5152 %
+Incorrectly Classified Instances        80               48.4848 %
+Kappa statistic                         -0.0304
+Mean absolute error                      0.4848
+Root mean squared error                  0.6963
+Relative absolute error                 97.7562 %
+Root relative squared error            139.8233 %
+Total Number of Instances              165     
+
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.16      0.189      0.414     0.16      0.231      0.486    False
+                 0.811     0.84       0.537     0.811     0.646      0.486    True
+Weighted Avg.    0.515     0.544      0.481     0.515     0.457      0.486
+
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 12 63 |  a = False
+ 17 73 |  b = True
+
