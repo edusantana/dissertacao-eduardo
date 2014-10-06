@@ -1,8 +1,10 @@
 require 'yaml'
+require 'csv'
 
 config = YAML.load_file("config/weka.yml") # From file
 turma = config['turma']
-semanas = (1..18)
+semanas = (1..config['semanas'])
+definicoes = config['definicoes']
 
 javaexec = "java -cp #{config['weka_jar']}"
 
@@ -23,7 +25,7 @@ desc 'Converte arquivos csv para arff.'
 task :csv2arff
 
 config['definicoes'].each do |definicao|
-  csvfile =  "../#{turma}/#{definicao}.csv"
+  csvfile =  "#{config['csv_parent_dir']}/#{turma}/#{definicao}.csv"
   csvtempfile = "#{turma}/#{definicao}.csv"
   arfffile = "#{turma}/#{definicao}-original.arff"
   filtered = "#{turma}/#{definicao}.arff"
@@ -94,7 +96,6 @@ semanas.each do |semana|
     file outputZeroR => [train] do |t|
       `#{javaexec} #{classificadorZeroR} #{tail_cmd} > #{t.name}`
     end
-    task :ZeroR => [outputZeroR]
 
     outputOneR = "#{turma}/#{semana}/#{definicao}__OneR.txt"
     classificadorOneR = %Q( weka.classifiers.rules.OneR -B 6 )
@@ -134,11 +135,71 @@ semanas.each do |semana|
   end
 end
 
+
+desc "Extrai resumo dos resultados"
+task :resumo do
+
+  multitask :resumo_txt
+  multitask :resumo_csv
+
+  config['classificadores'].each do |c|
+    definicoes.each do |definicao|
+      resumo_csv_file = "#{turma}/#{c}/#{definicao}.csv"
+      file resumo_csv_file
+      semanas.each do |semana|
+        parent_dir = "#{turma}/#{c}"
+        directory parent_dir
+        resumo_semanal = "#{turma}/#{c}/#{definicao}-#{semana}.txt"
+        process_output = "#{turma}/#{semana}/#{definicao}__#{c}.txt"
+        file resumo_semanal => [process_output, parent_dir] do |task|
+          `grep -A9 "=== Stratified cross-validation ===" #{task.prerequisites.first} | tail -n 8 > #{task.name}`
+        end
+        multitask :resumo_txt => [resumo_semanal]
+        file resumo_csv_file => [resumo_semanal]
+      end
+      file resumo_csv_file do |task|
+        correctly_classified = []
+        kappa = []
+        semanas.each do |semana|
+          resumo_semanal = "#{turma}/#{c}/#{definicao}-#{semana}.txt"
+          content = File.readlines resumo_semanal
+          content.each_with_index do |line, i| 
+            if (i == config['cross_validation_params']['Correctly_Classified'])then
+              # "Correctly Classified Instances         142               86.0606 %"
+              correctly_classified << line[/\d+\.\d+/]
+            end
+            if (i == config['cross_validation_params']['Kappa'])then
+              # Kappa statistic                          0.7135
+              kappa << line[/\d\.\d+/]
+            end
+
+          end 
+        end
+        CSV.open(task.name, "wb") do |csv|
+          semanas.each do |semana|
+            csv << [semana, correctly_classified[semana-1], kappa[semana-1]]
+          end
+        end
+      end
+      multitask :resumo_csv => [resumo_csv_file] 
+    end
+  end
+  
+  
+  Rake::Task['resumo_txt'].invoke
+  Rake::Task['resumo_csv'].invoke
+end
+
+
+
+
+
 desc "x test"
 task :x do |t|
-  train = "319/10/SemanalAcumulada_6-MediaFinal_2.arff"
-  classificador = %Q( weka.classifiers.functions.SimpleLogistic -I 0 -M 500 -H 50 -W 0.0 )
-  `#{javaexec} #{classificador} -t #{train} -i -x 10`
+  s = "Correctly Classified Instances         142               86.0606 %"
+#  puts s[/\d+\s*\d+\.\d+/]
+#  puts s[/\d+/]
+  puts s[/\d+\.\d+/]
 end
 
 # java -cp /home/santana/ambiente/weka/weka.jar weka.classifiers.rules.OneR -B 6 -t 319/10/SemanalAcumulada_6-MediaFinal_2.arff
