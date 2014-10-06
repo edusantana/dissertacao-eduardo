@@ -81,8 +81,12 @@ task :SMO
 desc "Executa SimpleLogistic (linear logistic regression) em todas as definições da turma atual."
 task :SimpleLogistic
 
+desc "Executa Votação. Com SMO, SimpleLogistic e NaiveBayes."
+task :Vote
+
+
 desc "Executa todos os classificadores."
-multitask :classificadores => [:filtrasemana, :ZeroR, :OneR, :J48, :NaiveBayes, :SMO, :SimpleLogistic]
+multitask :classificadores => [:filtrasemana, :ZeroR, :OneR, :J48, :NaiveBayes, :SMO, :SimpleLogistic, :Vote]
 
 semanas.each do |semana|
   semana_dir = "#{turma}/#{semana}"
@@ -132,6 +136,14 @@ semanas.each do |semana|
     end
     task :SimpleLogistic => [outputSimpleLogistic]
 
+    outputVote = "#{turma}/#{semana}/#{definicao}__Vote.txt"
+    classificadorSMO_double_quotes = classificadorSMO.gsub('"', '\\"')
+    classificadorVote = %Q( weka.classifiers.meta.Vote -S 1 \\\n -B "#{classificadorSMO_double_quotes}" \\\n -B "#{classificadorSimpleLogistic}" \\\n -B "#{classificadorNaiveBayes}\" -R MAJ )
+    file outputVote => [train] do |t|
+      puts %Q(Executando: #{classificadorVote} #{tail_cmd} > #{t.name})
+      `#{javaexec} #{classificadorVote} #{tail_cmd} > #{t.name}`
+    end
+    task :Vote => [outputVote]
   end
 end
 
@@ -144,7 +156,7 @@ task :resumo do
 
   config['classificadores'].each do |c|
     definicoes.each do |definicao|
-      resumo_csv_file = "#{turma}/#{c}/#{definicao}.csv"
+      resumo_csv_file = "#{turma}/#{definicao}.csv"
       file resumo_csv_file
       semanas.each do |semana|
         parent_dir = "#{turma}/#{c}"
@@ -157,34 +169,50 @@ task :resumo do
         multitask :resumo_txt => [resumo_semanal]
         file resumo_csv_file => [resumo_semanal]
       end
-      file resumo_csv_file do |task|
-        correctly_classified = []
-        kappa = []
+    end
+  end
+  definicoes.each do |definicao|
+    resumos_dir = "#{turma}/resumos"
+    directory resumos_dir
+    resumo_csv_file = "#{resumos_dir}/#{definicao}.data"
+    file resumo_csv_file => [resumos_dir] do |task|
+      correctly_classified = []
+      kappa = []
+      datatable = []
+      config['classificadores'].each_index do |cindex|
+        c = config['classificadores'][cindex]
         semanas.each do |semana|
           resumo_semanal = "#{turma}/#{c}/#{definicao}-#{semana}.txt"
           content = File.readlines resumo_semanal
+          circumference = -1
           content.each_with_index do |line, i| 
             if (i == config['cross_validation_params']['Correctly_Classified'])then
               # "Correctly Classified Instances         142               86.0606 %"
               correctly_classified << line[/\d+\.\d+/]
+              circumference = line[/\d+\.\d+/]
             end
             if (i == config['cross_validation_params']['Kappa'])then
               # Kappa statistic                          0.7135
               kappa << line[/\d\.\d+/]
             end
-
-          end 
-        end
-        CSV.open(task.name, "wb") do |csv|
-          semanas.each do |semana|
-            csv << [semana, correctly_classified[semana-1], kappa[semana-1]]
-          end
+          end # content 
+          # Tree  age  circumference: http://www.statmethods.net/graphs/line.html
+          row = [cindex+1, semana, circumference]
+          datatable << row
+        end # semanas
+      end # classificadores
+      CSV.open(task.name, "wb", :col_sep=>" ") do |csv|
+        csv << ["Tree", "age","circumference"]
+        datatable.each do |row|
+          csv << row
         end
       end
-      multitask :resumo_csv => [resumo_csv_file] 
     end
+    multitask :resumo_csv => [resumo_csv_file] 
+
   end
-  
+
+
   
   Rake::Task['resumo_txt'].invoke
   Rake::Task['resumo_csv'].invoke
