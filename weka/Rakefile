@@ -8,6 +8,8 @@ definicoes = config['definicoes']
 
 javaexec = "java -cp #{config['weka_jar']}"
 
+task :all => [:turma, :csv2arff, :filtrasemana, :classificadores, :resumo]
+
 desc '319'
 file 'X319/SemanalAcumulada_6-MediaFinal_2.arff' => ['319/SemanalAcumulada_18.csv'] do
   #puts config['definicoes']
@@ -20,9 +22,10 @@ task :turma do
   puts config['turma']
 end
 
+directory "#{turma}"
 
 desc 'Converte arquivos csv para arff.'
-task :csv2arff
+multitask :csv2arff => [turma]
 
 config['definicoes'].each do |definicao|
   csvfile =  "#{config['csv_parent_dir']}/#{turma}/#{definicao}.csv"
@@ -42,12 +45,12 @@ config['definicoes'].each do |definicao|
     `#{javaexec} weka.filters.unsupervised.attribute.Remove -R "1,10" -i #{task.prerequisites.first} -o #{task.name}`
   end
 
-  task :csv2arff => [arfffile, filtered]
+  multitask :csv2arff => [filtered]
 
 end
 
 desc 'Cria datasets separados filtrados por semana'
-task :filtrasemana
+multitask :filtrasemana
 
 semanas.each do |semana|
   semana_dir = "#{turma}/#{semana}"
@@ -58,7 +61,7 @@ semanas.each do |semana|
       `#{javaexec} weka.filters.unsupervised.instance.SubsetByExpression -E '(ATT1=#{semana})' -i #{turma}/#{definicao}.arff -o #{turma}/#{semana}/#{definicao}.arff`
     end
     
-    task :filtrasemana => ["#{turma}/#{semana}/#{definicao}.arff"]
+    multitask :filtrasemana => ["#{turma}/#{semana}/#{definicao}.arff"]
   end
 end
 
@@ -188,8 +191,9 @@ task :resumo do
           content.each_with_index do |line, i| 
             if (i == config['cross_validation_params']['Correctly_Classified'])then
               # "Correctly Classified Instances         142               86.0606 %"
-              correctly_classified << line[/\d+\.\d+/]
-              circumference = line[/\d+\.\d+/]
+              # "Correctly Classified Instances         132               80      %"
+              circumference = line[/\d+(\.\d+)?\s*%$/].gsub(/\s*%$/,"")
+              correctly_classified << circumference
             end
             if (i == config['cross_validation_params']['Kappa'])then
               # Kappa statistic                          0.7135
@@ -197,12 +201,12 @@ task :resumo do
             end
           end # content 
           # Tree  age  circumference: http://www.statmethods.net/graphs/line.html
-          row = [cindex+1, semana, circumference]
+          row = [cindex+1, semana, circumference,c]
           datatable << row
         end # semanas
       end # classificadores
       CSV.open(task.name, "wb", :col_sep=>" ") do |csv|
-        csv << ["Tree", "age","circumference"]
+        csv << ["Tree", "age","circumference", "name"]
         datatable.each do |row|
           csv << row
         end
